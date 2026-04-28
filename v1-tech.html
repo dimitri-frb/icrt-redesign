@@ -109,10 +109,10 @@
     text-transform: uppercase;
   }
 
-  /* Sticky sub-nav */
+  /* Sticky sub-nav — sits below the fixed top nav so they don't overlap */
   .subnav {
-    position: sticky; top: 0;
-    background: rgba(255,255,255,0.85);
+    position: sticky; top: 64px;
+    background: rgba(255,255,255,0.92);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid #eee;
     z-index: 50;
@@ -125,7 +125,9 @@
   }
   .subnav a { color: #444; }
   .subnav a:hover { color: #000; }
-  @media (max-width: 700px) { .subnav { gap: 18px; overflow-x: auto; justify-content: flex-start; padding: 14px 20px; } }
+  @media (max-width: 800px) {
+    .subnav { top: 52px; gap: 18px; overflow-x: auto; justify-content: flex-start; padding: 14px 20px; }
+  }
 
   /* Section blocks (Tesla style: full-bleed image + minimal copy) */
   section.block {
