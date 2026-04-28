@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ICR Télécom — Refonte / 3 directions</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .wrap {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 48px 64px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+  .brand { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; }
+  .brand b { color: #fff; font-weight: 600; }
+  .meta { font-size: 13px; color: #666; }
+  h1 {
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+  h1 em { color: #888; font-style: normal; }
+  .lead { font-size: 18px; color: #aaa; max-width: 640px; margin-bottom: 80px; line-height: 1.5; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    flex: 1;
+  }
+  @media (max-width: 980px) { .grid { grid-template-columns: 1fr; } .wrap { padding: 32px; } }
+  .card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #111;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    min-height: 480px;
+    transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
+  }
+  .card:hover { transform: translateY(-6px); }
+  .card .preview {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .card .preview::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.85) 100%);
+  }
+  .card .meta-block {
+    position: relative;
+    padding: 28px;
+    z-index: 2;
+    margin-top: -120px;
+  }
+  .card .num { font-size: 12px; color: #777; letter-spacing: 0.2em; }
+  .card h2 { font-size: 28px; font-weight: 300; letter-spacing: -0.01em; margin: 8px 0 8px; }
+  .card p { font-size: 14px; color: #999; line-height: 1.5; }
+  .card .arrow { font-size: 20px; margin-top: 16px; color: #fff; }
+  .v1 .preview { background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.1)),
+    url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80'); }
+  .v2 .preview { background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1)),
+    url('https://images.unsplash.com/photo-1581092446327-9b52bd1570c2?w=1400&q=80'); }
+  .v3 .preview { background-image:
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+    url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80'); }
+  footer { margin-top: 64px; font-size: 12px; color: #555; display: flex; justify-content: space-between; }
+  footer a { color: #888; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><b>ICR Télécom</b> · Refonte du site</div>
+    <div class="meta">3 directions / 1 brief</div>
+  </header>
+
+  <div>
+    <h1>Trois pistes pour <em>repenser</em><br/>la présence en ligne d'ICR.</h1>
+    <p class="lead">Une même page d'accueil, trois directions visuelles. Comparez côte à côte et choisissez le ton qui colle le mieux à la marque.</p>
+  </div>
+
+  <div class="grid">
+    <a class="card v1" href="v1-tech.html">
+      <div class="preview"></div>
+      <div class="meta-block">
+        <div class="num">DIRECTION 01</div>
+        <h2>Tech & Cinématique</h2>
+        <p>Inspiration Tesla SolarRoof. Pleine page, typographie XXL, ambiance produit, focus sur l'IRVE et la fibre.</p>
+        <div class="arrow">→</div>
+      </div>
+    </a>
+    <a class="card v2" href="v2-institutional.html">
+      <div class="preview"></div>
+      <div class="meta-block">
+        <div class="num">DIRECTION 02</div>
+        <h2>Institutionnel moderne</h2>
+        <p>Inspiration Voltaria. Charcoal, narratif, mission, dirigeants visibles, gravitas B2B et collectivités.</p>
+        <div class="arrow">→</div>
+      </div>
+    </a>
+    <a class="card v3" href="v3-minimal.html">
+      <div class="preview"></div>
+      <div class="meta-block">
+        <div class="num">DIRECTION 03</div>
+        <h2>Clean & Minimal</h2>
+        <p>Éditorial, beaucoup de blanc, typographie soignée, accent discret. Premium sans en faire trop.</p>
+        <div class="arrow">→</div>
+      </div>
+    </a>
+  </div>
+
+  <footer>
+    <span>Brief : refonte de la page d'accueil de icrtelecom.fr</span>
+    <a href="https://icrtelecom.fr" target="_blank">→ site actuel</a>
+  </footer>
+</div>
+</body>
+</html>

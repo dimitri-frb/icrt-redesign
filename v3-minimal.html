@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ICR Télécom — Électricité & Télécom · Limours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1a1a1a;
+    background: #f6f4ef;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  :root {
+    --bg: #f6f4ef;
+    --bg-2: #ece8df;
+    --paper: #fff;
+    --ink: #1a1a1a;
+    --ink-2: #5a5a5a;
+    --line: #d8d2c5;
+    --accent: #2d4a2b; /* deep forest */
+  }
+  .serif { font-family: 'Fraunces', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+  /* Top bar */
+  .top {
+    position: sticky; top: 0; z-index: 80;
+    backdrop-filter: blur(14px);
+    background: rgba(246,244,239,0.82);
+    border-bottom: 1px solid var(--line);
+  }
+  .top .row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 32px;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  .top .logo { font-family: 'Fraunces', Georgia, serif; font-size: 22px; font-weight: 500; letter-spacing: -0.02em; }
+  .top .logo .dot { color: var(--accent); }
+  .top nav { display: flex; gap: 28px; font-size: 14px; }
+  .top nav a { color: var(--ink-2); }
+  .top nav a:hover { color: var(--ink); }
+  .top .cta {
+    border: 1px solid var(--ink);
+    padding: 9px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .top .cta:hover { background: var(--ink); color: var(--bg); }
+  @media (max-width: 800px) { .top nav { display: none; } }
+
+  /* Hero — editorial split */
+  .hero {
+    padding: 80px 0 100px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero .grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  @media (max-width: 900px) { .hero .grid { grid-template-columns: 1fr; gap: 48px; } }
+  .hero .meta {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 28px;
+  }
+  .hero .meta .pip { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .hero h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(48px, 6vw, 88px);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.0;
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .hero .lede {
+    font-size: 18px;
+    color: var(--ink-2);
+    max-width: 480px;
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+  .hero .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    padding: 15px 28px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    border: 1px solid transparent;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: all 0.2s ease;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { background: #000; }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+  .hero .visual {
+    aspect-ratio: 4/5;
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0.0) 50%, rgba(0,0,0,0.15) 100%),
+      url('https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=1400&q=85');
+    background-size: cover; background-position: center;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero .visual .stamp {
+    position: absolute;
+    bottom: 24px; left: 24px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    padding: 12px 18px;
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+  .hero .visual .stamp b { color: var(--accent); }
+
+  /* Index strip */
+  .index-strip {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .index-strip .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  @media (max-width: 800px) { .index-strip .grid { grid-template-columns: repeat(2, 1fr); } }
+  .index-strip a {
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-right: 1px solid var(--line);
+    transition: background 0.2s ease;
+  }
+  .index-strip a:last-child { border-right: none; }
+  .index-strip a:hover { background: var(--bg-2); }
+  .index-strip .num { font-size: 12px; color: var(--ink-2); letter-spacing: 0.1em; }
+  .index-strip .name { font-size: 16px; font-weight: 500; }
+  .index-strip .arrow { font-size: 14px; color: var(--ink-2); margin-top: 4px; }
+
+  /* Section: services editorial */
+  section.svc {
+    padding: 140px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .svc .head {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+  @media (max-width: 800px) { .svc .head { grid-template-columns: 1fr; } }
+  .svc .eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); }
+  .svc h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(36px, 4.4vw, 60px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-top: 8px;
+  }
+  .svc h2 em { font-style: italic; color: var(--accent); font-weight: 400; }
+
+  .svc-rows { display: flex; flex-direction: column; }
+  .svc-row {
+    padding: 36px 0;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 80px 1.2fr 1.5fr 1fr;
+    gap: 32px;
+    align-items: start;
+    transition: background 0.25s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  .svc-row:hover { background: rgba(45,74,43,0.04); }
+  @media (max-width: 900px) { .svc-row { grid-template-columns: 60px 1fr; gap: 16px; } .svc-row .desc, .svc-row .meta-r { grid-column: 1 / -1; padding-left: 60px; } }
+  .svc-row .num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--accent);
+  }
+  .svc-row .title {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .svc-row .desc { color: var(--ink-2); font-size: 15px; max-width: 420px; }
+  .svc-row .meta-r { font-size: 13px; color: var(--ink-2); display: flex; flex-direction: column; gap: 6px; align-items: flex-end; text-align: right; }
+  @media (max-width: 900px) { .svc-row .meta-r { align-items: flex-start; text-align: left; } }
+  .svc-row .arrow { font-size: 18px; color: var(--ink); margin-top: 4px; }
+  .tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    font-size: 11px;
+    color: var(--ink-2);
+    letter-spacing: 0.04em;
+  }
+
+  /* Approach: 2-column with quote + image */
+  .approach {
+    padding: 140px 0;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .approach .grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  @media (max-width: 900px) { .approach .grid { grid-template-columns: 1fr; gap: 48px; } }
+  .approach .e { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 16px; }
+  .approach h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(34px, 4vw, 50px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+  .approach h2 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .approach p { color: var(--ink-2); font-size: 17px; line-height: 1.7; max-width: 480px; margin-bottom: 18px; }
+  .approach .quote {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+    margin-top: 32px;
+  }
+  .approach .img {
+    aspect-ratio: 4/5;
+    background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=85');
+    background-size: cover; background-position: center;
+    border-radius: 6px;
+  }
+
+  /* Numbers — editorial */
+  .numbers {
+    padding: 120px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .numbers .head { text-align: center; max-width: 700px; margin: 0 auto 80px; }
+  .numbers .e { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 16px; }
+  .numbers h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .numbers h2 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .num-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 700px) { .num-grid { grid-template-columns: repeat(2, 1fr); } }
+  .num-cell {
+    padding: 40px 28px;
+    border-right: 1px solid var(--line);
+  }
+  .num-cell:last-child { border-right: none; }
+  @media (max-width: 700px) { .num-cell:nth-child(2) { border-right: none; } .num-cell:nth-child(1), .num-cell:nth-child(2) { border-bottom: 1px solid var(--line); } }
+  .num-cell .v {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(48px, 5vw, 72px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .num-cell .v sup { font-size: 0.45em; vertical-align: top; opacity: 0.55; margin-left: 2px; }
+  .num-cell .l { font-size: 14px; color: var(--ink-2); margin-top: 14px; }
+
+  /* References — image grid */
+  .refs {
+    padding: 140px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .refs .head {
+    display: grid; grid-template-columns: 1fr 2fr; gap: 32px;
+    margin-bottom: 60px; align-items: end;
+  }
+  @media (max-width: 800px) { .refs .head { grid-template-columns: 1fr; } }
+  .refs .e { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); }
+  .refs h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(32px, 4vw, 50px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .refs h2 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .refs .grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 800px) { .refs .grid { grid-template-columns: 1fr; } }
+  .refs .col { display: grid; gap: 24px; }
+  .refs .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .refs .card .img {
+    aspect-ratio: 16/10;
+    background-size: cover; background-position: center;
+  }
+  .refs .card .body { padding: 24px; }
+  .refs .card .tag { margin-bottom: 12px; }
+  .refs .card h3 { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 8px; }
+  .refs .card p { color: var(--ink-2); font-size: 14px; }
+  .refs .card.large .img { aspect-ratio: 16/9; }
+  .refs .img-1 { background-image: url('https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1400&q=85'); }
+  .refs .img-2 { background-image: url('https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=1400&q=85'); }
+  .refs .img-3 { background-image: url('https://images.unsplash.com/photo-1558002038-1055907df827?w=1400&q=85'); }
+  .refs .img-4 { background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1400&q=85'); }
+
+  /* CTA panel */
+  .cta {
+    padding: 160px 32px;
+    text-align: center;
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .cta .e { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(246,244,239,0.65); margin-bottom: 24px; }
+  .cta h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(40px, 5.5vw, 80px);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    max-width: 900px;
+    margin: 0 auto 28px;
+  }
+  .cta h2 em { font-style: italic; color: #c5d8c2; font-weight: 400; }
+  .cta p { color: rgba(246,244,239,0.7); max-width: 540px; margin: 0 auto 40px; font-size: 17px; }
+  .cta .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .cta .btn-primary { background: var(--bg); color: var(--ink); }
+  .cta .btn-primary:hover { background: #fff; }
+  .cta .btn-ghost { color: var(--bg); border-color: rgba(246,244,239,0.4); }
+  .cta .btn-ghost:hover { background: rgba(246,244,239,0.12); border-color: var(--bg); }
+
+  /* Footer */
+  footer.foot {
+    background: var(--bg);
+    color: var(--ink-2);
+    padding: 80px 0 32px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 60px;
+  }
+  @media (max-width: 800px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+  .foot-grid h5 { color: var(--ink); font-size: 13px; font-weight: 500; margin-bottom: 20px; letter-spacing: 0.04em; }
+  .foot-grid ul { list-style: none; }
+  .foot-grid li { margin-bottom: 10px; font-size: 14px; }
+  .foot-grid a:hover { color: var(--accent); }
+  .foot-grid .brand-block .b-name {
+    color: var(--ink); font-family: 'Fraunces', Georgia, serif;
+    font-size: 28px; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 12px;
+  }
+  .foot-grid .brand-block .b-name .dot { color: var(--accent); }
+  .foot-grid .brand-block p { font-size: 14px; line-height: 1.6; max-width: 320px; }
+  .foot-bottom {
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; gap: 12px;
+    font-size: 12px; flex-wrap: wrap;
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="row">
+    <div class="logo">ICR<span class="dot">.</span>Télécom</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#approche">Approche</a>
+      <a href="#chiffres">Chiffres</a>
+      <a href="#references">Références</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="cta">Devis gratuit</a>
+  </div>
+</header>
+
+<section class="hero container">
+  <div class="grid">
+    <div>
+      <div class="meta"><span class="pip"></span> Limours · Île-de-France <span style="opacity:0.5">/</span> Depuis 2006</div>
+      <h1>L'électricité<br/>et le numérique,<br/><em>bien faits.</em></h1>
+      <p class="lede">Une PME de 40 personnes, basée en Essonne, qui installe et entretient les réseaux électriques, la fibre, les bornes IRVE et la vidéoprotection. Pour les particuliers, les pros et les collectivités.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#contact">Demander un devis →</a>
+        <a class="btn btn-ghost" href="#services">Voir les services</a>
+      </div>
+    </div>
+    <div class="visual">
+      <div class="stamp"><b>Certifié IRVE</b> · Habilitations électriques</div>
+    </div>
+  </div>
+</section>
+
+<section class="index-strip">
+  <div class="grid">
+    <a href="#services">
+      <div class="num">01</div>
+      <div class="name">Électricité</div>
+      <div class="arrow">→</div>
+    </a>
+    <a href="#services">
+      <div class="num">02</div>
+      <div class="name">Fibre optique</div>
+      <div class="arrow">→</div>
+    </a>
+    <a href="#services">
+      <div class="num">03</div>
+      <div class="name">Bornes IRVE</div>
+      <div class="arrow">→</div>
+    </a>
+    <a href="#services">
+      <div class="num">04</div>
+      <div class="name">Vidéoprotection</div>
+      <div class="arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<section class="svc" id="services">
+  <div class="container">
+    <div class="head">
+      <div class="eyebrow">Nos services</div>
+      <h2>Quatre métiers,<br/>une même <em>exigence</em>.</h2>
+    </div>
+    <div class="svc-rows">
+
+      <div class="svc-row">
+        <div class="num">01</div>
+        <div>
+          <div class="title">Électricité générale</div>
+        </div>
+        <div class="desc">Installations neuves, rénovations, mises aux normes, dépannage. Du tableau au luminaire, du résidentiel au tertiaire.</div>
+        <div class="meta-r">
+          <div><span class="tag">NF C 15-100</span></div>
+          <div class="arrow">→</div>
+        </div>
+      </div>
+
+      <div class="svc-row">
+        <div class="num">02</div>
+        <div>
+          <div class="title">Fibre optique & réseaux</div>
+        </div>
+        <div class="desc">Tirage de fibre, soudures, raccordement RJ45, détection et débouchage de fourreaux PTT.</div>
+        <div class="meta-r">
+          <div><span class="tag">FTTH · FTTO</span></div>
+          <div class="arrow">→</div>
+        </div>
+      </div>
+
+      <div class="svc-row">
+        <div class="num">03</div>
+        <div>
+          <div class="title">Bornes de recharge — IRVE</div>
+        </div>
+        <div class="desc">Étude, installation et maintenance pour particuliers, copropriétés et flottes professionnelles.</div>
+        <div class="meta-r">
+          <div><span class="tag">Certifié IRVE</span></div>
+          <div class="arrow">→</div>
+        </div>
+      </div>
+
+      <div class="svc-row">
+        <div class="num">04</div>
+        <div>
+          <div class="title">Vidéoprotection & sécurité</div>
+        </div>
+        <div class="desc">Caméras IP, alarmes connectées, contrôle d'accès, points d'accès Wi-Fi pro.</div>
+        <div class="meta-r">
+          <div><span class="tag">IP · Cloud</span></div>
+          <div class="arrow">→</div>
+        </div>
+      </div>
+
+      <div class="svc-row">
+        <div class="num">05</div>
+        <div>
+          <div class="title">Domotique & contrôle d'accès</div>
+        </div>
+        <div class="desc">Pilotage chauffage, éclairage, ouvrants. Solutions résidentielles et tertiaires, simples à exploiter.</div>
+        <div class="meta-r">
+          <div><span class="tag">KNX · IP</span></div>
+          <div class="arrow">→</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="approach" id="approche">
+  <div class="container grid">
+    <div class="img"></div>
+    <div>
+      <div class="e">Notre approche</div>
+      <h2>Bien installer,<br/>c'est <em>écouter</em><br/>avant de tirer le premier câble.</h2>
+      <p>Chaque projet commence par une visite technique sans frais. Nous comprenons l'usage final, le bâtiment, vos contraintes — puis nous chiffrons en transparence, planning et garanties inclus.</p>
+      <p>Côté terrain, un référent unique vous suit du début à la fin. Côté bureau, une trace écrite à chaque étape.</p>
+      <div class="quote">« Une installation bien faite ne se voit pas. Elle dure, simplement. »</div>
+    </div>
+  </div>
+</section>
+
+<section class="numbers" id="chiffres">
+  <div class="container">
+    <div class="head">
+      <div class="e">En chiffres</div>
+      <h2>Vingt ans de <em>terrain</em>, en Île-de-France.</h2>
+    </div>
+    <div class="num-grid">
+      <div class="num-cell"><div class="v">40</div><div class="l">Collaborateurs</div></div>
+      <div class="num-cell"><div class="v">1500<sup>+</sup></div><div class="l">Interventions chaque mois</div></div>
+      <div class="num-cell"><div class="v">3<sup>M€</sup></div><div class="l">Chiffre d'affaires</div></div>
+      <div class="num-cell"><div class="v">×3</div><div class="l">Croissance depuis 2015</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="refs" id="references">
+  <div class="container">
+    <div class="head">
+      <div class="e">Références récentes</div>
+      <h2>Quelques projets, du <em>résidentiel</em> à la collectivité.</h2>
+    </div>
+    <div class="grid">
+      <div class="col">
+        <div class="card large">
+          <div class="img img-2"></div>
+          <div class="body">
+            <span class="tag">Collectivité — Essonne</span>
+            <h3>Déploiement fibre — quartier résidentiel</h3>
+            <p>Tirage de fibre et raccordement RJ45 pour un programme communal de 60 logements. Coordination avec le bailleur, livraison sur 6 semaines.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img img-1"></div>
+          <div class="body">
+            <span class="tag">Copropriété — Yvelines</span>
+            <h3>20 bornes IRVE en parking sous-terrain</h3>
+            <p>Étude, dimensionnement de tableau, installation et supervision. Certification finale et formation du syndic.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="img img-3"></div>
+          <div class="body">
+            <span class="tag">PME — Hauts-de-Seine</span>
+            <h3>Mise aux normes électrique tertiaire</h3>
+            <p>Reprise complète du tableau, courants forts/faibles. Continuité d'activité assurée avec interventions hors plage ouvrée.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img img-4"></div>
+          <div class="body">
+            <span class="tag">Mairie — Essonne</span>
+            <h3>Vidéoprotection 24 caméras IP</h3>
+            <p>Installation, paramétrage NVR, formation des agents et SAV. Conformité RGPD respectée bout-en-bout.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="e">Démarrer</div>
+  <h2>Un projet,<br/>un <em>devis</em> sous 24 h.</h2>
+  <p>Particuliers, entreprises ou collectivités — racontez-nous ce que vous avez en tête, on s'occupe du reste.</p>
+  <div class="actions">
+    <a class="btn btn-primary" href="tel:0164913806">→ 01 64 91 38 06</a>
+    <a class="btn btn-ghost" href="mailto:contact@icrtelecom.fr">contact@icrtelecom.fr</a>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="brand-block">
+        <div class="b-name">ICR<span class="dot">.</span>Télécom</div>
+        <p>Électricité, fibre optique, IRVE, vidéoprotection. PME française basée à Limours, en Essonne, depuis 2006.</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul><li><a href="#services">Électricité</a></li><li><a href="#services">Fibre optique</a></li><li><a href="#services">Bornes IRVE</a></li><li><a href="#services">Vidéoprotection</a></li><li><a href="#services">Domotique</a></li></ul>
+      </div>
+      <div>
+        <h5>Société</h5>
+        <ul><li><a href="#approche">Approche</a></li><li><a href="#chiffres">Chiffres</a></li><li><a href="#references">Références</a></li><li><a href="#contact">Contact</a></li></ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li>9 Rue de l'Aérotrain</li>
+          <li>91470 Limours</li>
+          <li>01 64 91 38 06</li>
+          <li>contact@icrtelecom.fr</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 ICR Télécom — Tous droits réservés</span>
+      <span>Mentions légales · Politique de confidentialité</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
